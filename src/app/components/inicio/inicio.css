@@ -1,0 +1,139 @@
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.content-main {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.main-section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #444;
+  margin: 2rem 0 1rem;
+}
+
+.template-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.template-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 310px;
+  height: 310px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.template-btn:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-4px);
+}
+
+.template-image-area {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
+  background-color: #ddd;
+}
+
+
+
+.template-info-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  padding: 0.5rem;
+}
+
+.template-info-area span:first-child {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.25rem;
+}
+
+.btn-rating {
+  color: #ffb400;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .template-buttons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .template-btn {
+    width: 90%;
+    height: 220px;
+  }
+
+  .main-section-title {
+    font-size: 1.5rem;
+  }
+}
+
+.project-cover {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;  /* 🔥 Esto hace que se adapte sin deformarse */
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+

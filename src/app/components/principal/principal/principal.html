@@ -1,0 +1,60 @@
+<div class="main-container">
+
+      <div class="header-band">
+        <div class="header-content-wrapper">
+
+          <div class="nav-buttons">
+            <button class="auth-button" (click)="loginWithGoogle()">
+              Regístrate
+            </button>
+            <button class="auth-button" (click)="loginWithGoogle()">
+              Iniciar Sesión
+            </button>
+          </div>
+
+          <header class="main-header">
+            
+            <div class="logo-box">
+              <img src="ProvandoLogo.png" alt="Logo" class="logo-image">
+            </div>
+
+            <div class="title-group">
+              <p class="welcome-text">BIENVENIDOS A</p>
+              <h1 class="main-title">PequeDidacta</h1>
+            </div>
+          </header>
+        </div>
+      </div>
+
+      <main class="main-content-wrapper">
+
+        <h2 class="creativity-text">
+          Despierta tu creatividad
+        </h2>
+
+        <div *ngIf="proyectosPublicos.length === 0" class="no-projects">
+        <p>No hay proyectos públicos disponibles por el momento.</p>
+      </div>
+
+      <div class="template-buttons-container" *ngIf="proyectosPublicos.length > 0">
+        <button 
+          *ngFor="let proyecto of proyectosPublicos" 
+          class="template-btn"
+        >
+          <div class="template-image-area">
+            <img 
+            *ngIf="proyecto.imagenPortada" 
+            [src]="'http://localhost:8080/uploads/' + proyecto.imagenPortada" 
+            class="template-image-area"
+          />
+          </div>
+          <div class="template-info-area">
+            <span class="project-name">{{ proyecto.nombreProyecto }}</span>
+            <span class="project-description">{{ proyecto.descripcion }}</span>
+            <span class="project-author">Por: {{ proyecto.nombreUsuario }} ⭐ {{ proyecto.promedioValoracion || '0' }} </span>
+
+          </div>
+        </button>
+      </div>
+      </main>
+    </div>

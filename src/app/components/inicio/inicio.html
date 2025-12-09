@@ -1,0 +1,37 @@
+<div class="app-layout">
+  <div class="content-area">
+    <main class="content-main">
+      
+      <h3 class="main-section-title">DESPIERTA TU CREATIVIDAD</h3>
+
+      <h4 class="subtitle">Proyectos De Otros</h4>
+
+      <div *ngIf="proyectosPublicos.length === 0" class="no-projects">
+        <p>No hay proyectos públicos disponibles por el momento.</p>
+      </div>
+
+      <div class="template-buttons-container" *ngIf="proyectosPublicos.length > 0">
+        <button 
+          *ngFor="let proyecto of proyectosPublicos" 
+          class="template-btn"
+          (click)="verPresentacion(proyecto)"
+        >
+          <div class="template-image-area">
+            <img 
+            *ngIf="proyecto.imagenPortada" 
+            [src]="'http://localhost:8080/uploads/' + proyecto.imagenPortada" 
+            class="template-image-area"
+          />
+          </div>
+          <div class="template-info-area">
+            <span class="project-name">{{ proyecto.nombreProyecto }}</span>
+            <span class="project-description">{{ proyecto.descripcion }}</span>
+            <span class="project-author">Por: {{ proyecto.nombreUsuario }} ⭐ {{ proyecto.promedioValoracion || '0' }} </span>
+
+          </div>
+        </button>
+      </div>
+
+    </main>
+  </div>
+</div>

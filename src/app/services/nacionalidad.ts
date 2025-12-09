@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environmets/environmet';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NacionalidadService {
+
+  private apiUrl = `${environment.apiUrl}/api/nacionalidades`;
+
+  constructor(private http: HttpClient) { }
+
+  getNacionalidades(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+}

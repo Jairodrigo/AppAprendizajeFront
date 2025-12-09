@@ -1,0 +1,172 @@
+/* CONTENEDOR GENERAL */
+.container {
+  padding: 25px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+  color: #eaeaea;
+}
+
+/* TÍTULO */
+.container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* FILTROS */
+.filtros {
+  margin-bottom: 25px;
+  display: flex;
+  gap: 12px;
+}
+
+.filtros button {
+  padding: 9px 18px;
+  border-radius: 20px;
+  border: 1px solid #3a3a3a;
+  background: #1d1d1d;
+  color: #d3d3d3;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.filtros button:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.filtros button.activo {
+  background: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,123,255,0.35);
+}
+
+/* LOADING */
+.loading {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  color: #bbbbbb;
+}
+
+/* GRID DE TARJETAS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 25px;
+}
+
+/* TARJETA INDIVIDUAL */
+.card {
+  background: #75A1B7;
+  padding: 50px;
+  border-radius: 15px;
+  color: #f1f1f1;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* CABECERA */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* BOTÓN DE MENÚ */
+.menu-container {
+  position: relative;
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  color: #cfcfcf;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menu-btn:hover {
+  color: white;
+}
+
+/* MENÚ DESPLEGABLE */
+.menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: #2d2f36;
+  border-radius: 10px;
+  width: 170px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  animation: fadeIn 0.2s ease;
+  z-index: 10;
+  padding: 4px 0;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  color: #eaeaea;
+  padding: 4px 8px;
+  font-size: 14px; 
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  align-items: center;
+  gap: 8px;                       /* Espacio entre icono y texto */
+  white-space: nowrap; 
+}
+
+.menu button:hover {
+  background: #3a3c43;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DESCRIPCIÓN */
+.card p {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #c7c7c7;
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 0;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
+.fav-btn:hover {
+  transform: scale(1.2);
+}

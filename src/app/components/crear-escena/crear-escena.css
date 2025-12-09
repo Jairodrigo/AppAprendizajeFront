@@ -1,0 +1,357 @@
+/* Contenedor general */
+.escenas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f9f9f9;
+  height: 100vh;
+}
+
+/* Tabs de escenas */
+.escenas-tabs {
+  background: #1e2a38;
+  padding: 8px;
+}
+
+.tabs-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  align-items: center;
+  scrollbar-width: thin;
+}
+
+/* Escena individual */
+.tab-item {
+  background: #2e3c4f;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.tab-item.active {
+  background: #4e6fff;
+}
+
+/* Botón eliminar escena */
+.btn-eliminar-tab {
+  background: transparent;
+  border: none;
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-eliminar-tab:hover {
+  color: #ff2e2e;
+}
+
+/* Botón agregar escena */
+.btn-agregar {
+  background: #28a745 !important;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-agregar:hover {
+  background: #218838 !important;
+}
+
+/* Editor principal */
+.editor-container {
+  display: flex;
+  flex: 1;
+}
+
+/* Canvas de escena */
+.scene-canvas {
+  width: 900px;
+  height: 640px;
+  border: 2px dashed #ccc;
+  position: relative;
+  border-radius: 10px;
+  margin: 10px auto;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+
+/* Panel lateral */
+.toolbar {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border-left: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.toolbar h3 {
+  text-align: center;
+  color: #2e3c4f;
+  margin-bottom: 10px;
+}
+
+.toolbar label {
+  font-weight: 600;
+  color: #444;
+  margin-top: 10px;
+}
+
+/* INPUTS */
+.toolbar input[type="text"],
+.toolbar input[type="color"],
+.toolbar textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* --- BOTONES --- */
+.btn-cargar,
+.btn-elegir,
+.btn-guardar,
+.btn-limpiar {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Botón Elegir Fondo */
+.btn-cargar {
+  background: #007bff;
+  color: #fff;
+}
+.btn-cargar:hover {
+  background: #0056b3;
+}
+
+/* Botón Elegir Imágenes */
+.btn-elegir {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 3px 8px rgba(37, 117, 252, 0.3);
+}
+.btn-elegir:hover {
+  background: linear-gradient(135deg, #4a0fbf, #1a5de9);
+  transform: scale(1.03);
+}
+
+/* Quitar fondo */
+.btn-limpiar {
+  background: #ffc107;
+  color: #000;
+}
+.btn-limpiar:hover {
+  background: #e0a800;
+}
+
+/* Guardar escena */
+.btn-guardar {
+  background: #28a745;
+  color: white;
+  font-size: 15px;
+}
+.btn-guardar:hover {
+  background: #218838;
+}
+
+/* Botón eliminar imagen */
+.btn-eliminar {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #dc3545;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.btn-eliminar:hover {
+  background: #b02a37;
+}
+
+/* Imagen */
+.img-wrapper {
+  position: absolute;
+  cursor: move;
+  border: 1px dashed transparent;
+  border-radius: 6px;
+}
+
+.img-wrapper:hover {
+  border-color: #999;
+}
+
+.img-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.img-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.btn-reaccion {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: #ffc107;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mini-reaccion {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Botón de reacción */
+.btn-reaccion {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: #ffc107;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Mini preview de imagen */
+.mini-reaccion {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Mini preview de audio */
+.mini-audio {
+  position: absolute;
+  top: -25px;
+  left: -20px;
+  width: 100px;
+}
+
+.reaccion-preview {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.reaccion-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.reaccion-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cerrar-reaccion {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+}
+
+/* Selector de forma */
+.selector-forma {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 10;
+}
+
+/* Formas de la imagen */
+.img-inner.cuadrado img {
+  border-radius: 0;
+}
+
+.img-inner.redondo img {
+  border-radius: 12px;
+}
+
+.img-inner.circulo img {
+  border-radius: 50%;
+}
+
+.img-inner.ovalo img {
+  border-radius: 50% / 25%;
+}
+

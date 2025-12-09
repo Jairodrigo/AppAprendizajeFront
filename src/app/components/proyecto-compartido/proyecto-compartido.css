@@ -1,0 +1,134 @@
+/*
+ * Estos estilos deben aplicarse al elemento <body> (o al contenedor principal
+ * que envuelve a tu componente rosa) para que ocupe toda la pantalla
+ * y centre su contenido.
+ */
+body {
+  /* 1. Asegura que el contenedor ocupe al menos toda la altura visible */
+  min-height: 100vh; 
+  
+  /* 2. Elimina márgenes por defecto para que no haya desplazamientos */
+  margin: 0; 
+  
+  /* 3. Usa Flexbox para la alineación */
+  display: flex;
+  
+  /* 4. Centra los elementos hijos horizontalmente */
+  justify-content: center; 
+  
+  /* 5. Centra los elementos hijos verticalmente */
+  align-items: center; 
+  
+  /* (Opcional) Puedes añadir un fondo al body si lo necesitas. */
+  /* background-color: #f0f0f0; */
+}
+.escena-container {
+  width: 900px;
+  height: 640px;
+  position: relative;
+  /* El margin: auto centra horizontalmente. */
+  margin: auto; 
+  background-size: cover;
+  background-position: center; /* Simplificado: center center */
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 12px; /* Ligeramente más grande para un aspecto moderno */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sutil sombra para profundidad */
+}
+
+/* --- Contenedor de cada imagen --- */
+.img-wrapper {
+  position: absolute;
+}
+
+/* --- Contenedor interno que mantiene proporciones --- */
+.img-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Transición sutil para suavizar cambios de forma/tamaño/opacidad */
+  transition: border-radius 0.3s ease-out; 
+}
+
+/* --- Imagen principal --- */
+.img-inner img {
+  width: 100%;
+  height: 100%;
+  /* Usa 'object-fit: cover;' si prefieres que la imagen llene el contenedor completamente 
+     y recorte lo que sobra, en lugar de 'contain' que deja espacios vacíos. */
+  object-fit: contain; 
+  display: block;
+  cursor: pointer;
+  /* Transición sutil para suavizar cualquier cambio de imagen */
+  transition: transform 0.3s ease; 
+}
+
+/* --- Bordes según forma --- */
+.img-inner.cuadrado img {
+  border-radius: 0;
+}
+
+.img-inner.redondo img {
+  border-radius: 12px; /* Mismo valor que el contenedor principal */
+}
+
+.img-inner.circulo img {
+  border-radius: 50%;
+}
+
+.img-inner.ovalo img {
+  border-radius: 50% / 25%;
+}
+
+/* --- Imagen del recurso (Overlay/Marcador) --- */
+.imagen-recurso {
+  position: absolute;
+  /* Color más profesional y sutil, pero visible */
+  border: 3px solid #00ffff; 
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.7); /* Brillo para destacarlo */
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Estado hover para el recurso */
+.imagen-recurso:hover {
+  border-color: #ffcc00; /* Resaltar al pasar el ratón */
+  box-shadow: 0 0 15px rgba(255, 204, 0, 1);
+}
+
+/* --- Controles de Navegación --- */
+.controles {
+  position: absolute;
+  bottom: 25px; /* Ligeramente separado del borde */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px; /* Más espacio entre botones */
+  z-index: 20; /* Mayor z-index para asegurar que estén sobre todo */
+}
+
+.controles button {
+  /* Fondo más oscuro y sólido al inicio para mejor contraste */
+  background-color: rgba(34, 34, 34, 0.85); 
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+  color: #fff;
+  padding: 12px 22px; /* Ligeramente más grandes y cómodos */
+  border-radius: 20px; /* Bordes más redondeados (pastilla) */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600; /* Un poco más de peso a la fuente */
+  /* Transición en múltiples propiedades */
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; 
+  backdrop-filter: blur(4px); /* Efecto de desenfoque detrás del botón */
+}
+
+.controles button:hover {
+  background-color: rgba(0, 0, 0, 0.95); /* Negro casi total al pasar el ratón */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Pequeño levantamiento */
+}
+
+.controles button:active {
+  transform: translateX(-50%) translateY(0);
+}

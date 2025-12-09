@@ -1,0 +1,55 @@
+<body>
+<div
+  *ngIf="escenaActual"
+  #escenaContainer
+  class="escena-container"
+  [ngStyle]="{
+    'background-color': escenaActual.colorFondo || '#ffffff',
+    'background-image': escenaActual.fondoImagen ? 'url(' + escenaActual.fondoImagen + ')' : 'none',
+    'background-size': 'cover',
+    'background-position': 'center center',
+    'background-repeat': 'no-repeat'
+  }"
+>
+  <!-- Imágenes dentro de la escena -->
+  <ng-container *ngIf="escenaActual.imagenes && escenaActual.imagenes.length > 0">
+    <div
+      *ngFor="let img of escenaActual.imagenes"
+      class="img-wrapper"
+      [style.left.%]="img.leftPct"
+      [style.top.%]="img.topPct"
+      [style.width.%]="img.widthPct"
+      [style.height.%]="img.heightPct"
+    >
+      <div class="img-inner" [ngClass]="img.forma?.toLowerCase() || 'cuadrado'">
+        <img
+          [src]="img.url"
+          alt="imagen de escena"
+          draggable="false"
+          (click)="mostrarRecurso(img)"
+          (error)="onImageError(img.url)"
+        />
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Imagen del recurso anidado -->
+  <img
+    *ngIf="recursoVisible && recursoTipo === 'IMAGEN'"
+    [src]="recursoActualUrl"
+    class="imagen-recurso"
+    [style.left.%]="recursoX"
+    [style.top.%]="recursoY"
+    [style.width.%]="recursoWidth"
+    [style.height.%]="recursoHeight"
+    (click)="cerrarRecurso()"
+  />
+
+  <!-- Controles -->
+  <div class="controles">
+    <button (click)="anteriorEscena()">⟨ Anterior</button>
+    <button (click)="siguienteEscena()">Siguiente ⟩</button>
+    <button (click)="alternarPantallaCompleta()">⛶ Pantalla completa</button>
+  </div>
+</div>
+</body>

@@ -1,0 +1,53 @@
+<div class="full-page-container">
+
+  
+      
+      <div class="top-section">
+        
+        <div class="header-content">
+          <span class="back-arrow" (click)="router.navigate(['/principal'])">&lt;</span>
+          <h2 class="main-title">QUEREMOS CONOCERTE MEJOR</h2>
+        </div>
+        <img src="Saludando.png" alt="Gatito saludando" class="waving-cat-image">
+      </div>
+
+      <div class="bottom-section">
+        <div class="form-card">
+          
+
+          <form [formGroup]="cuestionarioForm" (ngSubmit)="guardar()" class="main-form">
+            
+            <div class="form-fields-container">
+              
+              <div class="form-group">
+                <select formControlName="genero" class="custom-select">
+                  <option value="" disabled>Género</option>
+                  @for (g of generos; track g.value) {
+                    <option [value]="g.value">{{ g.label }}</option>
+                  }
+                </select>
+                <div *ngIf="cuestionarioForm.get('genero')?.touched && cuestionarioForm.get('genero')?.invalid" class="error-message">
+                  Seleccione un género.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <select formControlName="nacionalidad" class="custom-select">
+                  <option value="" disabled>País</option>
+                  @for (n of nacionalidades; track n.idNacionalidad) {
+                    <option [value]="n.idNacionalidad">{{ n.pais }}</option>
+                  }
+                </select>
+                <div *ngIf="cuestionarioForm.get('nacionalidad')?.touched && cuestionarioForm.get('nacionalidad')?.invalid" class="error-message">
+                  Seleccione una nacionalidad.
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" [disabled]="cuestionarioForm.invalid" class="submit-button">
+              Guardar y continuar
+            </button>
+          </form>
+        </div>
+      </div>
+</div>

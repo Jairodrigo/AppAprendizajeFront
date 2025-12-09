@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Mis Favoritos</h2>
+
+  <!-- BOTONES DE FILTRO -->
+  <div class="filtros">
+    <button 
+      [class.activo]="filtroActual === 'todos'"
+      (click)="filtroActual='todos'; aplicarFiltro()"
+    >Todos</button>
+
+    <button 
+      [class.activo]="filtroActual === 'borrador'"
+      (click)="filtroActual='borrador'; aplicarFiltro()"
+    >Borradores</button>
+
+    <button 
+      [class.activo]="filtroActual === 'culminado'"
+      (click)="filtroActual='culminado'; aplicarFiltro()"
+    >Finalizados</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">Cargando favoritos...</div>
+
+  <div *ngIf="!loading && proyectosFiltrados.length === 0" class="loading">
+    No se encontraron proyectos favoritos.
+  </div>
+
+  <div class="cards" *ngIf="!loading && proyectosFiltrados.length > 0">
+    <div class="card" *ngFor="let proyecto of proyectosFiltrados">
+      <div class="card-header">
+        <!-- BOTÓN FAVORITO -->
+        <button class="fav-btn"
+                (click)="toggleFavorito(proyecto)"
+                [title]="proyecto.favorito ? 'Quitar de favoritos' : 'Marcar como favorito'">
+          <span *ngIf="proyecto.favorito" style="color: gold; font-size: 22px;">★</span>
+          <span *ngIf="!proyecto.favorito" style="color: gray; font-size: 22px;">☆</span>
+        </button>
+
+        <h3>{{ proyecto.nombreProyecto }}</h3>
+
+        <!-- MENÚ DE ACCIONES -->
+        <div class="menu-container">
+          <button class="menu-btn" (click)="toggleMenu(proyecto)">
+            &#x22EE;
+          </button>
+
+          <div *ngIf="proyecto.showMenu" class="menu">
+            <button (click)="editarProyecto(proyecto)">✏️ Editar proyecto</button>
+            <button *ngIf="proyecto.estadoNormalizado === 'culminado'" (click)="presentarProyecto(proyecto)">🎬 Presentar proyecto</button>
+            <button *ngIf="proyecto.estadoNormalizado === 'culminado'" (click)="compartirProyecto(proyecto)">🔗 Compartir proyecto</button>
+          </div>
+        </div>
+      </div>
+
+      <p>{{ proyecto.descripcion }}</p>
+    </div>
+  </div>
+</div>

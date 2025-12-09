@@ -1,0 +1,112 @@
+<div class="escenas-container">
+  <!-- 🔹 Selector de escenas -->
+  <div class="escenas-tabs">
+    <div class="tabs-scroll">
+      <button class="btn-agregar" (click)="agregarEscena()">➕ Nueva escena</button>
+      <div *ngFor="let escena of escenas; let i = index"
+           class="tab-item"
+           [class.active]="i === escenaActualIndex"
+           (click)="seleccionarEscena(i)">
+        {{ escena.nombre }}
+        <button class="btn-eliminar-tab" (click)="eliminarEscena(i); $event.stopPropagation()">✖</button>
+      </div>
+    </div>
+  </div>
+
+  <!--Editor principal -->
+  <div class="editor-container">
+    <div id="sceneCanvas"
+         class="scene-canvas"
+         [style.background-color]="escenaActual.colorFondo"
+         [style.background-image]="escenaActual.fondoImagen ? 'url(' + escenaActual.fondoImagen + ')' : 'none'">
+
+      <div *ngFor="let imgActual of escenaActual.imagenes; let i = index"
+     class="img-wrapper"
+     cdkDrag
+     [cdkDragBoundary]="'#sceneCanvas'"
+     (cdkDragEnded)="onDragEnd($event, i)"
+     [ngStyle]="{
+        left: imgActual.x + 'px',
+        top: imgActual.y + 'px',
+        width: imgActual.ancho + 'px',
+        height: imgActual.alto + 'px'
+     }">
+
+  <!-- Botón eliminar imagen -->
+  <button class="btn-eliminar" (click)="eliminarImagen(i)">✖</button>
+
+  <!-- Selector de forma -->
+  <select [(ngModel)]="imgActual.forma" class="selector-forma">
+    <option value="CUADRADO">Cuadrado</option>
+    <option value="REDONDO">Redondo</option>
+    <option value="CIRCULO">Círculo</option>
+    <option value="OVALO">Óvalo</option>
+  </select>
+
+  <!-- Imagen principal -->
+  <div class="img-inner" [ngClass]="(imgActual.forma ?? 'CUADRADO').toLowerCase()">
+
+    <img [src]="imgActual.url" alt="recurso" draggable="false"/>
+  </div>
+
+  <!-- Botón de reacción -->
+  <button class="btn-reaccion" (click)="abrirInputReaccion(imgActual)">💬</button>
+
+  <!-- Reacción -->
+  <ng-container *ngIf="imgActual.reaccionUrl">
+    <div class="reaccion-container">
+      <img *ngIf="imgActual.reaccionTipo === 'IMAGEN'" [src]="imgActual.reaccionUrl" class="reaccion-preview"/>
+      <audio *ngIf="imgActual.reaccionTipo === 'AUDIO'" [src]="imgActual.reaccionUrl" controls></audio>
+      <span class="cerrar-reaccion" (click)="eliminarReaccion(imgActual)">×</span>
+    </div>
+  </ng-container>
+
+  <input #inputReaccion type="file" hidden accept="image/*,audio/*" (change)="cargarReaccion($event)" />
+</div>
+
+    </div>
+
+    <!--Herramientas -->
+    <div class="toolbar">
+      <h3>Herramientas</h3>
+
+      <label>📝 Nombre de la escena</label>
+      <input type="text" [(ngModel)]="escenaActual.nombre" />
+
+      <label>🎨 Color de fondo</label>
+      <input type="color" [(ngModel)]="escenaActual.colorFondo" />
+
+      <hr />
+
+      <label>🖼️ Fondo con imagen:</label>
+      <div class="input-fondo">
+        <button type="button" class="btn-cargar" (click)="fileInput.click()">📂 Elegir imagen</button>
+        <input #fileInput id="inputFondo" type="file" (change)="cargarFondo($event)" accept="image/*" hidden />
+      </div>
+      <button class="btn-limpiar" (click)="limpiarFondo()" [disabled]="!escenaActual.fondoImagen">
+        🧹 Quitar fondo
+      </button>
+
+      <hr />
+
+      <label>🧩 Agregar imágenes (máx. 6):</label>
+      <div class="input-imagenes">
+        <button type="button" class="btn-elegir" (click)="fileInputMultiple.click()">📁 Elegir archivos</button>
+        <input #fileInputMultiple type="file" (change)="cargarImagenes($event)" accept="image/*" multiple hidden />
+      </div>
+
+      <hr />
+
+      <div class="acciones-guardar">
+        <button (click)="guardarProyecto('B', 'PV')" class="btn-guardar-borrador">
+          💾 Guardar como borrador
+        </button>
+
+        <button (click)="guardarProyecto('C', 'PB')" class="btn-guardar-final">
+          🚀 Finalizar proyecto
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

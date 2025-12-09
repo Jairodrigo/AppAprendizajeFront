@@ -1,0 +1,37 @@
+<div class="app-layout">
+
+  <nav class="sidebar">
+    <button class="nav-item primary-nav-item" (click)="goToCrearProyecto()">CREAR</button>
+    <button class="nav-item" (click)="goToInicio()">INICIO</button>
+    <button class="nav-item" (click)="goToProyectos()">PROYECTOS</button>
+    <button class="nav-item" (click)="goToFavoritos()">FAVORITOS</button>
+  </nav>
+
+  <div class="content-area">
+
+    <header class="content-header-band">
+      <div class="header-inner">
+        <div class="welcome-section">
+          <div>
+            <p>BIENVENIDOS A</p>
+            <h2 class="app-name">PequeDidacta</h2>
+          </div>
+        </div>
+            <div class="profile-menu-container" (clickOutside)="isMenuOpen = false">
+            <button class="profile-btn" (click)="toggleMenu()">Usuario</button>
+
+            <div class="dropdown-menu" *ngIf="isMenuOpen">
+                <button class="dropdown-item" (click)="goToPerfil()">Mi perfil</button>
+                <button class="dropdown-item" (click)="logout()">Cerrar sesión</button>
+            </div>
+            </div>
+      </div>
+    </header>
+
+    <main class="content-main">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+
+</div>

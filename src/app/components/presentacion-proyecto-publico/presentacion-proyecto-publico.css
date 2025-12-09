@@ -1,0 +1,149 @@
+.escena-container {
+  width: 900px;
+  height: 640px;
+  position: relative;
+  margin: auto;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Contenedor de cada imagen */
+.img-wrapper {
+  position: absolute;
+}
+
+/* Contenedor interno que mantiene proporciones */
+.img-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Imagen principal */
+.img-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+}
+
+/* Bordes según forma */
+.img-inner.cuadrado img {
+  border-radius: 0;
+}
+
+.img-inner.redondo img {
+  border-radius: 12px;
+}
+
+.img-inner.circulo img {
+  border-radius: 50%;
+}
+
+.img-inner.ovalo img {
+  border-radius: 50% / 25%;
+}
+
+/* Imagen del recurso */
+.imagen-recurso {
+  position: absolute;
+  border: 2px solid #ff0;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Controles */
+.controles {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.controles button {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.controles button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.presentacion-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.lado-izquierdo {
+  flex: 3;
+}
+
+.lado-derecho {
+  flex: 1;
+  border-left: 2px solid #ddd;
+  padding-left: 20px;
+}
+
+.estrellas span {
+  font-size: 32px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.estrellas span.activa {
+  color: gold;
+}
+
+textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 10px;
+  resize: none;
+}
+
+.btn-guardar {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  background: #8bc34a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.comentario {
+  background: #f3f4f6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.fecha {
+  font-size: 12px;
+  color: #666;
+}
+
+.estrellitas span {
+  color: #ccc; /* gris por defecto */
+  font-size: 16px;
+}
+
+.estrellitas span.activa {
+  color: gold; /* dorado solo para las activas */
+}
+

@@ -1,0 +1,51 @@
+<div class="perfil-container">
+      <h2>Mi Perfil</h2>
+
+      <form *ngIf="usuario" (ngSubmit)="guardarCambios()">
+        <div class="perfil-card">
+          <label>
+            <strong>Nombre:</strong>
+            <input [(ngModel)]="usuario.nombre" name="nombre" required />
+          </label>
+
+          <label>
+            <strong>Apellido Paterno:</strong>
+            <input [(ngModel)]="usuario.apellidoPaterno" name="apellidoPaterno" required />
+          </label>
+
+          <label>
+            <strong>Género:</strong>
+            <select [(ngModel)]="usuario.genero" name="genero">
+              <option [ngValue]="'M'">Masculino</option>
+              <option [ngValue]="'F'">Femenino</option>
+              <option [ngValue]="'O'">Otros</option>
+            </select>
+          </label>
+
+
+          <label>
+            <strong>Nacionalidad:</strong>
+            <select [(ngModel)]="usuario.nacionalidad.idNacionalidad" name="nacionalidad">
+              <option *ngFor="let n of nacionalidades" [ngValue]="n.idNacionalidad">
+                {{ n.pais }}
+              </option>
+            </select>
+          </label>
+
+
+          <label>
+            <strong>Correo (no editable):</strong>
+            <input [value]="usuario.correo" disabled />
+          </label>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="save-btn">Guardar</button>
+          <button type="button" class="back-btn" (click)="goBack()">⬅ Regresar</button>
+        </div>
+      </form>
+
+      <div *ngIf="!usuario" class="loading">
+        Cargando datos del usuario...
+      </div>
+    </div>

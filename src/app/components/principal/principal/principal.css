@@ -1,0 +1,285 @@
+/* =================================================================== */
+/* 📚 Variables de Color PequeDidacta */
+/* Usamos :root o la clase principal para definir las variables CSS */
+/* =================================================================== */
+
+.main-container {
+    /* Colores base */
+    --color-primary-blue: #a7dcf6;
+    --color-primary-green: #8bc34a;
+    --color-light-blue: #e3f2fd;
+    --color-light-green: #f1f8e9;
+    --color-accent: #ffa726;
+    
+    /* Fondos y Texto */
+    --color-bg-main: #f5f9fc;
+    --color-bg-card: #ffffff;
+    --color-text-primary: #2c3e50;
+    --color-text-light: #ffffff;
+
+    /* Configuración principal */
+    min-height: 100vh;
+    background-color: var(--color-bg-main);
+    font-family: 'Fredoka', cursive, sans-serif;
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =================================================================== */
+/* 🚀 Header y Navegación */
+/* =================================================================== */
+
+.header-band {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color:#75A1B7; /* primary-blue con opacidad */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.header-content-wrapper {
+    max-width: 1280px; /* 7xl */
+    margin: 0 auto;
+    padding: 1rem 1.5rem; /* py-4 px-6 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width: 640px) { /* sm: */
+    .header-content-wrapper {
+        flex-direction: row;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-text-light);
+    order: 2; /* Para mover debajo en móvil */
+    margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+    .main-header {
+        order: 1;
+        margin-top: 0;
+    }
+}
+
+.logo-image {
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+@media (min-width: 640px) {
+    .logo-image {
+        height: 60px;
+    }
+}
+
+.welcome-text {
+    font-size: 0.75rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    line-height: 1;
+}
+
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+@media (min-width: 640px) {
+    .main-title {
+        font-size: 1.875rem;
+    }
+}
+
+/* Botones de Navegación */
+.nav-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.75rem;
+    order: 1;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .nav-buttons {
+        order: 2;
+        width: auto;
+    }
+}
+
+.auth-button {
+    background-color: var(--color-primary-green);
+    color: var(--color-text-light);
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px; /* full rounded */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    border: 2px solid var(--color-primary-green);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-button:hover {
+    background-color: rgba(139, 195, 74, 0.8);
+    border-color: var(--color-text-light);
+    transform: scale(1.03);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =================================================================== */
+/* 🎨 Contenido Principal y Título Creatividad */
+/* =================================================================== */
+
+.main-content-wrapper {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem; /* py-12 px-6 */
+}
+
+@media (min-width: 640px) {
+    .main-content-wrapper {
+        padding: 4rem 2rem; /* sm:py-16 sm:px-8 */
+    }
+}
+
+.creativity-text {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem; /* mb-10 */
+    color: var(--color-text-primary);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.creativity-text::before,
+.creativity-text::after {
+    display: inline-block;
+}
+
+/* Ocultamos el texto original y solo mostramos el contenido con pseudo-elementos */
+.creativity-text {
+    font-size: 0; /* Oculta el texto original */
+}
+
+@media (min-width: 640px) {
+    .creativity-text {
+        font-size: 3rem; /* sm:text-5xl */
+        margin-bottom: 4rem; /* sm:mb-16 */
+    }
+}
+
+.template-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.template-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 310px;
+  height: 310px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.template-btn:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-4px);
+}
+
+.template-image-area {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
+  background-color: #ddd;
+}
+
+
+
+.template-info-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  padding: 0.5rem;
+}
+
+.template-info-area span:first-child {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.25rem;
+}
+
+.btn-rating {
+  color: #ffb400;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .template-buttons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .template-btn {
+    width: 90%;
+    height: 220px;
+  }
+
+  .main-section-title {
+    font-size: 1.5rem;
+  }
+}
+
+.project-cover {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;  /* 🔥 Esto hace que se adapte sin deformarse */
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}

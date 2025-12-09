@@ -1,0 +1,115 @@
+<div class="presentacion-wrapper">
+  
+  <!-- LADO IZQUIERDO -->
+  <div class="lado-izquierdo">
+
+    <div
+      *ngIf="escenaActual"
+      #escenaContainer
+      class="escena-container"
+      [ngStyle]="{
+        'background-color': escenaActual.colorFondo || '#ffffff',
+        'background-image': escenaActual.fondoImagen ? 'url(' + escenaActual.fondoImagen + ')' : 'none',
+        'background-size': 'cover',
+        'background-position': 'center center',
+        'background-repeat': 'no-repeat'
+      }"
+    >
+      <!-- Imágenes dentro de la escena -->
+      <ng-container *ngIf="escenaActual.imagenes && escenaActual.imagenes.length > 0">
+
+        <div
+          *ngFor="let img of escenaActual.imagenes"
+          class="img-wrapper"
+          [style.left.%]="img.leftPct"
+          [style.top.%]="img.topPct"
+          [style.width.%]="img.widthPct"
+          [style.height.%]="img.heightPct"
+        >
+          <div class="img-inner" [ngClass]="img.forma?.toLowerCase() || 'cuadrado'">
+            <img
+              [src]="img.url"
+              alt="imagen de escena"
+              draggable="false"
+              (click)="mostrarRecurso(img)"
+              (error)="onImageError(img.url)"
+            />
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Imagen del recurso anidado -->
+      <img
+        *ngIf="recursoVisible && recursoTipo === 'IMAGEN'"
+        [src]="recursoActualUrl"
+        class="imagen-recurso"
+        [style.left.%]="recursoX"
+        [style.top.%]="recursoY"
+        [style.width.%]="recursoWidth"
+        [style.height.%]="recursoHeight"
+        (click)="cerrarRecurso()"
+      />
+
+      <!-- Controles -->
+      <div class="controles">
+        <button (click)="anteriorEscena()">⟨ Anterior</button>
+        <button (click)="siguienteEscena()">Siguiente ⟩</button>
+        <button (click)="alternarPantallaCompleta()">⛶ Pantalla completa</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- LADO DERECHO -->
+  <!-- LADO DERECHO -->
+<div class="lado-derecho">
+
+  <!-- ⭐ Rating + Comentarios juntos -->
+  <div class="valoracion-comentario-box">
+
+    <h3>Califica y comenta el proyecto</h3>
+
+    <!-- ⭐ Estrellas -->
+    <div class="estrellas">
+      <span
+        *ngFor="let star of [1,2,3,4,5]"
+        (click)="seleccionarEstrella(star)"
+        [class.activa]="star <= valoracionSeleccionada">
+        ★
+      </span>
+    </div>
+
+    <!-- 📝 Comentario -->
+    <textarea 
+      [(ngModel)]="nuevoComentario"
+      placeholder="Escribe un comentario..."
+    ></textarea>
+
+    <!-- BOTÓN ÚNICO (valoración + comentario) -->
+    <button class="btn-guardar" (click)="enviarValoracion()">
+      Enviar valoración
+    </button>
+  </div>
+
+  <hr />
+
+  <!-- 📌 Lista de comentarios -->
+  <div class="comentarios-box">
+    <h3>Comentarios recientes</h3>
+
+    <div class="lista-comentarios">
+      <div class="comentario" *ngFor="let c of comentarios">
+        <strong>{{ c.usuarioNombre }}</strong>
+        <div class="estrellitas">
+  <span *ngFor="let s of [1,2,3,4,5]" [class.activa]="s <= (c.calificacion || 0)">★</span>
+</div>
+
+
+        <p>{{ c.comentarios }}</p>
+        <span class="fecha">{{ c.fecha }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

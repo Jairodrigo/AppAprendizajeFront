@@ -1,0 +1,183 @@
+/* =================================================================== */
+/* 📚 Variables de Color (Asumidas del Global) */
+/* =================================================================== */
+
+.project-create-container {
+    /* Variables de ejemplo, asume que están definidas globalmente */
+    --pd-blue: #75A1B7;
+    --pd-green: #8bc34a;
+    --pd-light-blue: #e3f2fd;
+    --pd-text: #2c3e50;
+    --pd-bg-main: #f5f9fc;
+    --color-error: #ef4444; 
+    --pd-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* =================================================================== */
+/* 🏗️ Contenedor y Título Principal */
+/* =================================================================== */
+
+.project-create-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 1rem;
+    font-family: 'Fredoka', cursive, sans-serif;
+}
+
+.title-heading {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--pd-text);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px var(--pd-light-blue);
+}
+
+/* =================================================================== */
+/* 📝 Tarjeta del Formulario */
+/* =================================================================== */
+
+.form-card {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--pd-shadow);
+    border: 3px solid var(--pd-light-blue);
+}
+
+/* --- Grupos de Campo --- */
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--pd-text);
+    font-size: 1.1rem;
+}
+
+.form-label .required {
+    color: var(--color-error); /* Asterisco en rojo */
+    font-size: 1.2rem;
+}
+
+/* --- Estilos de Inputs y Textareas --- */
+
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--pd-light-blue);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--pd-text);
+    background-color: var(--pd-bg-main);
+    transition: all 0.2s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-input::placeholder {
+    color: #a0a8b1;
+    font-style: italic;
+}
+
+.form-input:focus {
+    border-color: var(--pd-blue);
+    box-shadow: 0 0 0 4px rgba(117, 161, 183, 0.25);
+    background-color: white;
+    outline: none;
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+/* --- Botón de Envío --- */
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 30px; /* Botón píldora */
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    background-color: var(--pd-green);
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(139, 195, 74, 0.4);
+    transition: background-color 0.2s, transform 0.2s, opacity 0.2s;
+}
+
+.submit-btn:hover:not([disabled]) {
+    background-color: #72a843; /* Un tono más oscuro de verde */
+    transform: translateY(-2px);
+}
+
+.submit-btn[disabled] {
+    background-color: #cccccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* --- Mensajes de Estado --- */
+
+.message-status {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.message-status .success {
+    color: var(--pd-green);
+}
+
+.message-status .error {
+    color: var(--color-error);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}
+
+/* --- Adaptabilidad Móvil --- */
+@media (max-width: 600px) {
+    .project-create-container {
+        margin: 1rem auto;
+    }
+    .form-card {
+        padding: 1.5rem;
+    }
+    .title-heading {
+        font-size: 2rem;
+    }
+    .submit-btn {
+        padding: 0.8rem 1rem;
+    }
+}
+
+.btn-elegir {
+  padding: 5px 80px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-elegir {
+  background: linear-gradient(135deg, #fafafa, #75A1B7);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+}
+.btn-elegir:hover {
+  transform: scale(1.03);
+}

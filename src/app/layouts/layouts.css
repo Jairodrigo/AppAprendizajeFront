@@ -1,0 +1,247 @@
+/* =================================================================== */
+/* 📚 Variables de Color PequeDidacta */
+/* =================================================================== */
+
+.app-layout, .full-page-container {
+    /* Definición de variables CSS Custom Properties */
+    --pd-blue: #75A1B7;
+    --pd-green: #8bc34a;
+    --pd-accent: #e3f2fd; 
+    --pd-light-blue: #e3f2fd;
+    --pd-text: #2c3e50;
+    --pd-bg-main: #f5f9fc;
+    --color-error: #ef4444; 
+    --pd-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* =================================================================== */
+/* 💻 Estructura del Layout Principal (Grid y Contenedor Base) */
+/* =================================================================== */
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 135px 1fr; 
+    min-height: 100vh;
+    background-color: var(--pd-bg-main);
+    font-family: 'Fredoka', cursive, sans-serif;
+}
+
+.content-area {
+    display: flex;
+    flex-direction: column;
+    min-width: 0; 
+}
+
+.content-main {
+    flex-grow: 1;
+    padding: 1.5rem;
+}
+
+.full-page-container {
+    min-height: 100vh;
+    color: var(--pd-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative; 
+}
+
+@media (max-width: 1024px) {
+    .app-layout {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* =================================================================== */
+/* 🧭 Barra Lateral (Sidebar) */
+/* =================================================================== */
+
+.sidebar {
+    background-color: var(--pd-blue); 
+    color: white; 
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 4px 0 10px var(--pd-shadow);
+    border-right: 4px solid var(--pd-accent); 
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        display: none; 
+    }
+}
+
+.nav-item {
+    background-color: transparent;
+    border: 3px solid #75A1B7;
+    color: rgb(0, 0, 0); 
+    padding: 0.75rem 0.5rem;
+    border-radius: 5px; 
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: Right;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+.primary-nav-item {
+    background-color: var(--pd-accent); 
+    color: var(--pd-text); 
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    padding: 1rem 0.5rem;
+    transform: rotate(-2deg); 
+}
+
+.primary-nav-item:hover {
+    background-color: #ffffff; 
+}
+
+/* =================================================================== */
+/* 🌟 Encabezado (Header) y MENÚ DESPLEGABLE (SOLUCIÓN FINAL Z-INDEX) */
+/* =================================================================== */
+
+.content-header-band {
+    background-color: white;
+    border-bottom: 2px solid var(--pd-light-blue);
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 4px var(--pd-shadow);
+    z-index: 5; /* Z-index de la banda del header */
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.welcome-section p {
+    font-size: 0.75rem;
+    color: #141415; 
+    margin: 0;
+    font-weight: 600;
+}
+
+.app-name {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--pd-text); 
+    margin: 0;
+    line-height: 1;
+    text-shadow: 1px 1px 2px var(--pd-light-blue);
+}
+
+
+.profile-menu-container {
+  position: relative;
+  z-index: 999;
+}
+
+.profile-btn {
+ background-color: var(--pd-green);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s;
+    font-size: 1rem;
+}
+
+.profile-btn:hover {
+  background-color: #1565c0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 200;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--pd-text);
+    transition: background-color 0.15s;
+    font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--pd-light-blue);
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =================================================================== */
+/* 💡 ESTADO ACTIVO SIMULADO (CSS Únicamente) */
+/* =================================================================== */
+
+/* 1. Estilo para la clase 'active-nav' (para cuando se use routerLink) */
+.nav-item.active-nav,
+/* 2. Estilo simulado al estar enfocado (después de un click o con tecla Tab) */
+.nav-item:focus {
+    /* Colores y transformaciones para que se vea seleccionado */
+    color: #f5f9fc; /* Texto oscuro */
+    
+    /* Efecto visual de "salir" de la barra */
+    transform: translateX(5px) scale(1.02); 
+    
+    /* Remover el contorno azul por defecto del navegador */
+    outline: none; 
+}
+
+/* Regla extra: Asegurarse de que el botón primario no se vea afectado al enfocarlo si ya tiene rotación */
+.primary-nav-item:focus {
+    /* Mantener los estilos primarios */
+    background-color: #2c3e50; 
+    transform: translateY(-3px) rotate(-2deg) scale(1.02);
+    outline: none; 
+}
+
+.top-section {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 0.5rem;
+    
+    /* ⬅️ ¡AGREGAR ESTO! */
+    text-align: center; 
+}

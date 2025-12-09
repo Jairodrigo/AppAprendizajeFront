@@ -1,0 +1,62 @@
+<div class="project-create-container">
+  <h2 class="title-heading">Crear Nuevo Proyecto</h2>
+
+  <form [formGroup]="proyectoForm" (ngSubmit)="crearProyecto()" class="form-card">
+    
+    <!-- Campo Nombre del Proyecto -->
+    <div class="form-group">
+      <label for="nombreProyecto" class="form-label">Nombre del Proyecto <span class="required">*</span></label>
+      <input
+        id="nombreProyecto"
+        type="text"
+        class="form-input"
+        formControlName="nombreProyecto"
+        placeholder="Ej. Aplicación de Aprendizaje Interactivo"
+      />
+      <!-- Mensaje de error para el nombre -->
+      <div *ngIf="proyectoForm.get('nombreProyecto')?.invalid && proyectoForm.get('nombreProyecto')?.touched" class="error-message">
+        El nombre del proyecto es obligatorio.
+      </div>
+    </div>
+
+    <!-- Campo Descripción -->
+    <div class="form-group">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea
+        id="descripcion"
+        class="form-input form-textarea"
+        formControlName="descripcion"
+        rows="4"
+        placeholder="Describe brevemente el objetivo y el alcance de tu proyecto (opcional)"
+      ></textarea>
+    </div>
+
+    <!-- Portada del Proyecto-->
+
+    <div class="input-imagenes">
+      <label for="portada" class="form-label">Portada del Proyecto (Opcional)</label>
+
+      <input
+        id="portada"
+        type="file"
+        class="btn-elegir"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+
+    <!-- Botón de Envío -->
+    <button type="submit" class="submit-btn" [disabled]="guardando || proyectoForm.invalid">
+      <span *ngIf="guardando">Guardando...</span>
+      <span *ngIf="!guardando">Crear Proyecto Ahora</span>
+    </button>
+
+    <!-- Mensaje de estado (Éxito/Error) -->
+    <div class="message-status">
+      <span [ngClass]="{'success': mensaje.includes('✅'), 'error': mensaje.includes('❌')}">
+        {{ mensaje }}
+      </span>
+    </div>
+
+  </form>
+</div>

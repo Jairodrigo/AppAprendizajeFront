@@ -1,0 +1,190 @@
+/* =================================================================== */
+/* 👤 Estilos del Componente de Perfil */
+/* =================================================================== */
+
+.perfil-container {
+    max-width: 900px;
+    /* Centra el contenedor en el área principal */
+    margin: 2rem auto; 
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--pd-shadow);
+    color: var(--pd-text);
+}
+
+.perfil-container h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--pd-text);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--pd-light-blue);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Perfil Card (Contenedor de Campos del Formulario) --- */
+
+.perfil-card {
+    display: grid;
+    /* Grid de dos columnas que se adapta automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--pd-light-blue);
+    border-radius: 8px;
+    background-color: var(--pd-bg-main); /* Fondo gris claro */
+}
+
+.perfil-card label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* --- Estilos de Inputs y Selects --- */
+
+.perfil-card input,
+.perfil-card select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    border: 2px solid var(--pd-light-blue); /* Borde suave */
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--pd-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white;
+    /* Reset para que los selectores se vean igual */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.perfil-card input:focus,
+.perfil-card select:focus {
+    border-color: var(--pd-blue); /* Foco en color azul */
+    box-shadow: 0 0 0 3px rgba(117, 161, 183, 0.3); 
+    outline: none;
+}
+
+.perfil-card input[disabled] {
+    background-color: #eee;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* --- Contenedor de Botones de Acción --- */
+
+.buttons {
+    display: flex;
+    justify-content: flex-end; /* Alinear a la derecha por defecto */
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--pd-light-blue);
+}
+
+.buttons button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--pd-shadow);
+    transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
+    border: none;
+}
+
+.buttons button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Botón Guardar (Primario - Verde) */
+.save-btn {
+    background-color: var(--pd-green); /* Color de acento verde */
+    color: white;
+    font-size: 1.05rem;
+}
+
+/* Botón Regresar (Secundario) */
+.back-btn {
+    background-color: #f0f0f0; 
+    color: var(--pd-text);
+    font-size: 1rem;
+    border: 1px solid #ddd;
+}
+
+/* --- Mensaje de Carga --- */
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+/* --- Adaptabilidad Móvil --- */
+@media (max-width: 650px) {
+    .perfil-card {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+    }
+    
+    .perfil-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .buttons {
+        justify-content: center; /* Centrar botones en móvil */
+    }
+}
+
+/* =================================================================== */
+/* 🙋 Logo de Saludo Flotante (Inferior Izquierda) */
+/* =================================================================== */
+
+.waving-logo {
+    /* Posicionamiento Fijo para que se mantenga en la esquina */
+    position: fixed;
+    bottom: 40px; /* Separación del borde inferior */
+    left: 120px;  /* Separación del borde izquierdo */
+    
+    /* Dimensiones */
+    width: 200px;
+    height: 200px;
+    
+    /* Apariencia */
+    border-radius: 50%; /* Si es una imagen redonda */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    
+    /* Aseguramos que esté por encima de casi todo */
+    z-index: 9999; 
+    
+    /* Agregamos una animación simple para simular "saludo" al pasar el ratón */
+    transition: transform 0.3s ease;
+}
+
+.waving-logo:hover {
+    /* Pequeño efecto de "movimiento" o "saludo" */
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Opcional: Estilos para la imagen en sí si se usa un tag <img> */
+.waving-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+    .waving-logo {
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+        left: 10px;
+    }
+}
