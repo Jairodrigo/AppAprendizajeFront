@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NacionalidadService } from '../../services/nacionalidad'; 
-import { environment } from '../../../environmets/environmet';
+import { environment } from '../../../environments/environment';
 
 //se define que el componente es independiente 
 @Component({

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet,Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Inicio } from '../components/inicio/inicio';
-import { environment } from '../../environmets/environmet';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-layouts',
